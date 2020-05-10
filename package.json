@@ -13,14 +13,14 @@
     "build:bundleanalyzer": "yarn build -- --env.addons=bundleanalyzer"
   },
   "dependencies": {
+    "express": "^4.16.4",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-delay-render": "^0.1.2",
     "react-dom": "^16.13.1",
     "react-imported-component": "6.2.1",
     "react-router-dom": "^5.1.2",
-    "semantic-ui-react": "^0.88.2",
-    "express": "^4.16.4"
+    "semantic-ui-react": "^0.88.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

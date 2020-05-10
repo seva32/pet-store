@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Grid } from 'semantic-ui-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Grid } from "semantic-ui-react";
 
-import Layout from './Layout';
-import Features from './Features';
-import Profile from './Profile';
+import Layout from "./Layout";
+import Features from "./Features";
+import Profile from "./Profile";
 
 const Home = () => {
   return (
@@ -13,7 +13,7 @@ const Home = () => {
         <Grid.Row>
           <Grid.Column>
             <Features />
-            <Link to="/dynamic">Navigate to Dynamic Page</Link>
+            <Link to="/dynamic">Store</Link>
           </Grid.Column>
           <Grid.Column>
             <Profile />
