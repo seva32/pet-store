@@ -14,16 +14,11 @@ const Layout = ({ children }) => {
       <Link to="/">
         <Header as="h1" className={h1}>
           {name}
-          <button className="ui button" onClick={() => handleClick()}>
-            change!
-          </button>
         </Header>
       </Link>
       {children}
       <Divider />
-      <p className={pullRight}>
-        Made with <Icon name="heart" color="red" /> by Esau Silva
-      </p>
+      <p className={pullRight}>PetStore Inc. 2020</p>
     </Container>
   );
 };
