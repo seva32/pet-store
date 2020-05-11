@@ -1,5 +1,5 @@
-import React from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react';
+import React from "react";
+import { Card, Icon, Image } from "semantic-ui-react";
 
 const Profile = () => {
   return (
@@ -10,20 +10,19 @@ const Profile = () => {
           floated="right"
           shape="circular"
           bordered
-          src="https://avatars3.githubusercontent.com/u/9492978?v=3"
+          src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
+    AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+        9TXL0Y4OHwAAAABJRU5ErkJggg=="
         />
-        <Card.Header>Esau Silva</Card.Header>
-        <Card.Description>
-          Full Stack Software Engineer and avid Brazilian Jiu-Jitsu
-          practitioner.
-        </Card.Description>
+        <Card.Header>Owner</Card.Header>
+        <Card.Description>Taking care of all kind of pets.</Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <a href="https://twitter.com/_esausilva" target="_blank">
+        <a href="#">
           <Icon name="twitter" />
           Twitter
-        </a>{' '}
-        <a href="https://github.com/esausilva" target="_blank">
+        </a>{" "}
+        <a href="#">
           <Icon name="github" />
           GitHub
         </a>
