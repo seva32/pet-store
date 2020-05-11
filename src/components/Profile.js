@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Icon, Image } from "semantic-ui-react";
+import dogImage from "./assets/dog.jpg";
 
 const Profile = () => {
   return (
@@ -10,9 +11,7 @@ const Profile = () => {
           floated="right"
           shape="circular"
           bordered
-          src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
-    AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
-        9TXL0Y4OHwAAAABJRU5ErkJggg=="
+          src={dogImage}
         />
         <Card.Header>Owner</Card.Header>
         <Card.Description>Taking care of all kind of pets.</Card.Description>
