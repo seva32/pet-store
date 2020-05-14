@@ -1,16 +1,16 @@
 {
-  "name": "react-starter-boilerplate-hmr",
+  "name": "pet-store",
   "version": "1.0.0",
-  "description": "React starter boilerplate with Hot Module Replacement, React 16 and Webpack 4",
+  "description": "pet-store",
   "main": "index.js",
-  "author": "Esau Silva <@_esausilva>",
-  "license": "MIT",
+  "author": "Seva32",
   "scripts": {
     "dev": "webpack-dev-server --env.env=dev",
     "dev:bundleanalyzer": "yarn dev -- --env.addons=bundleanalyzer",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production webpack -p --env.env=prod",
-    "build:bundleanalyzer": "yarn build -- --env.addons=bundleanalyzer"
+    "build:bundleanalyzer": "yarn build -- --env.addons=bundleanalyzer",
+    "test": "jest"
   },
   "dependencies": {
     "express": "^4.16.4",
@@ -35,8 +35,12 @@
     "cross-env": "^7.0.2",
     "css-loader": "^3.5.1",
     "cssnano": "^4.1.10",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.4.4",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.0.4",
+    "jest": "^26.0.1",
     "mini-css-extract-plugin": "^0.9.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
@@ -66,5 +70,17 @@
     "webpack",
     "hot module replacement",
     "hmr"
-  ]
+  ],
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js"
+    ],
+    "coverageReporters": [
+      "text"
+    ]
+  }
 }
