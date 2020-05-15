@@ -10,9 +10,10 @@
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production webpack -p --env.env=prod",
     "build:bundleanalyzer": "yarn build -- --env.addons=bundleanalyzer",
-    "test": "jest"
+    "test": "export NODE_ENV=test && jest"
   },
   "dependencies": {
+    "babel-jest": "^26.0.1",
     "express": "^4.16.4",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -31,6 +32,7 @@
     "@hot-loader/react-dom": "^16.13.0",
     "autoprefixer": "^9.7.6",
     "babel-loader": "^8.1.0",
+    "babel-plugin-macros": "^2.8.0",
     "chalk": "^4.0.0",
     "cross-env": "^7.0.2",
     "css-loader": "^3.5.1",
@@ -41,6 +43,7 @@
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.0.4",
     "jest": "^26.0.1",
+    "jest-cli": "^26.0.1",
     "mini-css-extract-plugin": "^0.9.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
@@ -55,10 +58,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/esausilva/react-starter-boilerplate-hmr.git"
+    "url": "#"
   },
   "bugs": {
-    "url": "https://github.com/esausilva/react-starter-boilerplate-hmr/issues"
+    "url": "#"
   },
   "keywords": [
     "react",
@@ -67,9 +70,7 @@
     "semantic ui",
     "semantic ui react",
     "webpack 4",
-    "webpack",
-    "hot module replacement",
-    "hmr"
+    "hot module replacement"
   ],
   "jest": {
     "snapshotSerializers": [
@@ -81,6 +82,10 @@
     ],
     "coverageReporters": [
       "text"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css|less)$": "<rootDir>/CSSStub.js",
+      "^[./a-zA-Z0-9$_-]+\\.jpg$": "<rootDir>/ImgStub.js"
+    }
   }
 }
