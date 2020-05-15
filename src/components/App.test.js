@@ -1,7 +1,12 @@
 import React from "react";
 import App from "./App";
-import { shallow } from "enzyme";
+//import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
+
+import { configure } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+configure({ adapter: new Adapter() });
+import { shallow } from "enzyme";
 
 it("renders correctly enzyme", () => {
   const wrapper = shallow(<App />);
