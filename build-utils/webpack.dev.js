@@ -15,7 +15,12 @@ const config = {
   resolve: {
     alias: {
       "react-dom": "@hot-loader/react-dom",
+      "babel-plugin-syntax-dynamic-import":
+        "@babel/plugin-syntax-dynamic-import",
     },
+  },
+  node: {
+    fs: "empty",
   },
   devtool: "inline-source-map",
   module: {
