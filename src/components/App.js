@@ -1,18 +1,19 @@
 import React from "react";
 import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
-import importedComponent from "react-imported-component";
-import "react-imported-component/macro";
+//import importedComponent from "react-imported-component";
+//import "react-imported-component/macro";
+import { imported, lazy, useImported } from "react-imported-component/macro";
 
 import Home from "./Home";
 import Loading from "./Loading";
 
-const AsyncDynamicPAge = importedComponent(
+const AsyncDynamicPAge = imported(
   () => import(/* webpackChunkName:'DynamicPage' */ "./DynamicPage"),
   {
     LoadingComponent: Loading,
   }
 );
-const AsyncNoMatch = importedComponent(
+const AsyncNoMatch = imported(
   () => import(/* webpackChunkName:'NoMatch' */ "./NoMatch"),
   {
     LoadingComponent: Loading,
