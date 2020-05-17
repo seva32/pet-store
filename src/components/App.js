@@ -1,11 +1,22 @@
 import React from "react";
 import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
-import importedComponent from "react-imported-component";
+import Home from "./Home";
+// this import should enable import transpilation
 import "react-imported-component/macro";
 
-import Home from "./Home";
-import Loading from "./Loading";
+// splitting code
+// import "./load.async-imports";
+// import Load from "./load";
+// const AsyncDynamicPAge = Load(() =>
+//   import(/* webpackChunkName:'DynamicPage' */ "./DynamicPage")
+// );
+// const AsyncNoMatch = Load(() =>
+//   import(/* webpackChunkName:'NoMatch' */ "./NoMatch")
+// );
 
+// alltoghether
+import importedComponent from "react-imported-component";
+import Loading from "./Loading";
 const AsyncDynamicPAge = importedComponent(
   () => import(/* webpackChunkName:'DynamicPage' */ "./DynamicPage"),
   {
