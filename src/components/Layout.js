@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import { Header, Container, Divider, Icon } from "semantic-ui-react";
 
 import { pullRight, h1, containerCustom } from "./layout.css";
 
-const Layout = ({ children }) => {
-  const [name, setName] = useState("react-webpack");
-  function handleClick() {
-    setName("react-boilerplate-hmr");
-  }
+const Layout = ({ children, name }) => {
   return (
     <Container className={containerCustom}>
       <Link to="/">
@@ -21,6 +18,15 @@ const Layout = ({ children }) => {
       <p className={pullRight}>PetStore Inc. 2020</p>
     </Container>
   );
+};
+
+Layout.propTypes = {
+  children: PropTypes.element,
+  name: PropTypes.string,
+};
+
+Layout.defaultProps = {
+  name: "Pet Store",
 };
 
 export default Layout;
