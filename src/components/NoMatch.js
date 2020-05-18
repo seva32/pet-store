@@ -1,13 +1,13 @@
-import React from 'react';
-import { Icon } from 'semantic-ui-react';
+import React from "react";
+import { Icon } from "semantic-ui-react";
 
-import Layout from './Layout';
+import Layout from "./Layout";
 
 const NoMatch = () => {
   return (
     <Layout>
       <Icon name="minus circle" size="big" />
-      <strong>Page not found!</strong>
+      <strong>404 Page not found!</strong>
     </Layout>
   );
 };

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly enzyme 1`] = `
-<BrowserRouter>
+exports[`<App /> renders correctly enzyme 1`] = `
+<Component>
   <div>
     <Switch>
       <Route
@@ -33,5 +33,5 @@ exports[`renders correctly enzyme 1`] = `
       />
     </Switch>
   </div>
-</BrowserRouter>
+</Component>
 `;

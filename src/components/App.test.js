@@ -1,9 +1,27 @@
 import React from "react";
 import App from "./App";
-import { shallow } from "enzyme";
+import Home from "./Home";
+import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
+import { MemoryRouter } from "react-router";
+import NoMatch from "./NoMatch";
+import { act } from "react-dom/test-utils";
 
-it("renders correctly enzyme", () => {
-  const wrapper = shallow(<App />);
-  expect(toJson(wrapper)).toMatchSnapshot();
-}); // We just need to press "w" to activate watch mode then press "u" to update the snapshot.
+describe("<App />", () => {
+  it("renders correctly enzyme", () => {
+    const wrapper = shallow(<App />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+  test("invalid path should redirect to 404", () => {
+    var wrapper;
+    act(() => {
+      return (wrapper = mount(
+        <MemoryRouter initialEntries={["/random"]}>
+          <App />
+        </MemoryRouter>
+      ));
+    });
+    //expect(wrapper.find(Home)).toHaveLength(1);
+    expect(wrapper.find(NoMatch)).toHaveLength(1);
+  });
+});
