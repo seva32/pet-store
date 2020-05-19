@@ -13,8 +13,6 @@ const Profile = () => {
           bordered
           src={dogImage}
         />
-        <Card.Header>Owner</Card.Header>
-        <Card.Description>Taking care of all kind of pets.</Card.Description>
       </Card.Content>
       <Card.Content extra>
         <a href="#">
