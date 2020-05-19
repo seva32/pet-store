@@ -21,7 +21,7 @@ const Layout = ({ children, name }) => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
   name: PropTypes.string,
 };
 
