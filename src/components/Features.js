@@ -1,14 +1,14 @@
 import React from "react";
-import { List } from "semantic-ui-react";
+//import { List } from "semantic-ui-react";
 import { useAppContext } from "../context/AppProvider";
 
 const Features = () => {
-  const list = ["Dogs", "Cats", "Elms", "Lions"];
+  //const list = ["Dogs", "Cats", "Elms", "Lions"];
   const appContext = useAppContext();
   const name = appContext.appData.name;
   return (
     <>
-      <List data-ref="list">
+      {/* <List data-ref="list">
         {list.map((item, idx) => (
           <List.Item key={idx} data-ref="listItem" className="list-item">
             <List.Icon name="checkmark" />
@@ -17,7 +17,7 @@ const Features = () => {
             </List.Content>
           </List.Item>
         ))}
-      </List>
+      </List> */}
       <ul>
         <li className="item">Cho</li>
         <li className="item">Nem</li>
