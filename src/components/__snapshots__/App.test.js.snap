@@ -2,36 +2,38 @@
 
 exports[`<App /> renders correctly enzyme 1`] = `
 <Component>
-  <div>
-    <Switch>
-      <Route
-        component={[Function]}
-        exact={true}
-        path="/"
-      />
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "done": Promise {},
-            "preload": [Function],
-            "render": [Function],
+  <AppProvider>
+    <div>
+      <Switch>
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "done": Promise {},
+              "preload": [Function],
+              "render": [Function],
+            }
           }
-        }
-        exact={true}
-        path="/dynamic"
-      />
-      <Route
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "done": Promise {},
-            "preload": [Function],
-            "render": [Function],
+          exact={true}
+          path="/dynamic"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "done": Promise {},
+              "preload": [Function],
+              "render": [Function],
+            }
           }
-        }
-      />
-    </Switch>
-  </div>
+        />
+      </Switch>
+    </div>
+  </AppProvider>
 </Component>
 `;

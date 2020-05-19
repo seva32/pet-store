@@ -3,6 +3,7 @@ import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./Home";
 // this import should enable import transpilation
 import "react-imported-component/macro";
+import { AppProvider } from "../context/AppProvider";
 
 // splitting code
 // import "./load.async-imports";
@@ -33,13 +34,15 @@ const AsyncNoMatch = importedComponent(
 const App = () => {
   return (
     <Router>
-      <div>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/dynamic" component={AsyncDynamicPAge} />
-          <Route component={AsyncNoMatch} />
-        </Switch>
-      </div>
+      <AppProvider>
+        <div>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/dynamic" component={AsyncDynamicPAge} />
+            <Route component={AsyncNoMatch} />
+          </Switch>
+        </div>
+      </AppProvider>
     </Router>
   );
 };
