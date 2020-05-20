@@ -1,22 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { Header, Container, Divider, Icon } from "semantic-ui-react";
-
-import { pullRight, h1, containerCustom } from "./layout.css";
+import { Container, Divider } from "semantic-ui-react";
+import * as Styles from "./Layout.styles";
 
 const Layout = ({ children, name }) => {
   return (
-    <Container className={containerCustom}>
-      <Link to="/">
-        <Header as="h1" className={h1}>
-          {name}
-        </Header>
-      </Link>
+    <Styles.StyledContainer>
+      <div class="ui secondary  menu">
+        <Link to="/">
+          <a class="active item">{name}</a>
+        </Link>
+        <Link to="/dynamic">
+          <a class="item">Messages</a>
+        </Link>
+        <Link to="/">
+          <a class="item">Friends</a>
+        </Link>{" "}
+        <div class="right menu">
+          <div class="item">
+            <div class="ui icon input">
+              <input type="text" placeholder="Search..." />
+              <i class="search link icon"></i>
+            </div>
+          </div>
+          <Link to="/">
+            <a class="ui item">Signin</a>
+          </Link>
+          <Link to="/">
+            <a class="ui item">Signup</a>
+          </Link>
+        </div>
+      </div>
       {children}
       <Divider />
-      <p className={pullRight}>PetStore Inc. 2020</p>
-    </Container>
+      <p>PetStore Inc. 2020</p>
+    </Styles.StyledContainer>
   );
 };
 
