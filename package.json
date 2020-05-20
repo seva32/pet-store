@@ -10,7 +10,7 @@
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production webpack -p --env.env=prod",
     "build:bundleanalyzer": "yarn build -- --env.addons=bundleanalyzer",
-    "test": "export NODE_ENV=test && jest --watch --coverage"
+    "test": "export NODE_ENV=test && jest --watch"
   },
   "dependencies": {
     "express": "^4.16.4",
