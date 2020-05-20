@@ -13,7 +13,6 @@ const Home = () => {
         <Grid.Row>
           <Grid.Column>
             <Features />
-            <Link to="/dynamic">Store</Link>
           </Grid.Column>
           <Grid.Column>
             <Profile />
