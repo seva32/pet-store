@@ -1,8 +1,9 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
-import Features, { Foo, Bar } from "./Features";
+import Features, { Foo, Bar, handleTest } from "./Features";
 import { appData } from "../context/__mocks__/AppProvider";
-import { stub } from "sinon";
+import sinon from "sinon";
+import { assert } from "chai";
 
 beforeEach(() => {
   jest.resetModules();
@@ -139,5 +140,14 @@ describe("Features context", () => {
     wrapper = shallow(<Features />);
     expect(wrapper.find(".item").at(2).find(name)).toBeDefined();
     expect(wrapper.find(".item").at(2).text()).toEqual(name);
+  });
+});
+
+describe("tests sinon stub", () => {
+  it("should call function once", () => {
+    const spyF = sinon.spy();
+    handleTest(spyF);
+    assert(spyF.calledOnce); // chai
+    sinon.assert.calledOnce(spyF); // just sinon
   });
 });
