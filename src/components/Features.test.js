@@ -11,22 +11,14 @@ beforeEach(() => {
 jest.mock("../context/AppProvider.js");
 let name = appData.name; // context value
 
-let mockHandleOnClick = jest.fn();
 let text = "Initial para";
+
 let ulVar = (
   <ul>
     <li className="item">Cho</li>
     <li className="item every">3</li>
     <li className="item">{name}</li>
   </ul>
-);
-
-let elVar = (
-  <>
-    {ulVar}
-    <p onClick={() => {}}>{text}</p>
-    <Foo />
-  </>
 );
 
 describe("Features", () => {
@@ -58,8 +50,8 @@ describe("Features", () => {
     // react comp
     expect(wrapper.find("Foo").equals(<Foo />)).toBe(true);
     // jsx expresion
-    //expect(wrapper.equals(elVar)).toBe(true);
-    //expect(wrapper.getElement()).toEqual(elVar);
+    expect(wrapper.find("ul").equals(ulVar)).toBe(true);
+    expect(wrapper.find("ul").getElement()).toEqual(ulVar);
     expect(wrapper.find(".item").getElements().length).toBe(3);
     expect(
       wrapper.containsAllMatchingElements([<Foo />, ulVar, <p>{text}</p>])
@@ -100,6 +92,10 @@ describe("Features", () => {
         expect(typeof node.type() === "string").toBe(true);
       })
     );
+    // wrapper.find("*").forEach((node) => {
+    //   console.log(typeof node.type()); // function Foo , string ul/li/p , symbol fragment
+    //   console.log(node.type()); // Symbol(react.fragment) , ul , li , p , [Function: Foo]
+    // });
   });
 
   it("should test hostNodes api", () => {
@@ -134,11 +130,6 @@ describe("Features", () => {
     expect(wrapper.find(".every").parent().name()).toEqual("ul");
     expect(wrapper.find(".every").parent().is("ul")).toEqual(true);
     expect(wrapper.find(".every").parents().length).toEqual(2); // debug muestra todo incluido every
-  });
-
-  it("tests render api", () => {
-    // expect(wrapper.find("Foo").render().find(".in-foo").length).toEqual(1);
-    // console.log(wrapper.find(Foo).dive().find(Bar).debug());
   });
 });
 

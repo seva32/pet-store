@@ -1,34 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { Container, Divider } from "semantic-ui-react";
+import { Divider } from "semantic-ui-react";
 import * as Styles from "./Layout.styles";
 
 const Layout = ({ children, name }) => {
   return (
     <Styles.StyledContainer>
-      <div class="ui secondary  menu">
+      <div className="ui secondary  menu">
         <Link to="/">
-          <a class="active item">{name}</a>
+          <p className="active item">{name}</p>
         </Link>
         <Link to="/dynamic">
-          <a class="item">Messages</a>
+          <p className="item">Messages</p>
         </Link>
         <Link to="/">
-          <a class="item">Friends</a>
+          <p className="item">Friends</p>
         </Link>{" "}
-        <div class="right menu">
-          <div class="item">
-            <div class="ui icon input">
+        <div className="right menu">
+          <div className="item">
+            <div className="ui icon input">
               <input type="text" placeholder="Search..." />
-              <i class="search link icon"></i>
+              <i className="search link icon"></i>
             </div>
           </div>
           <Link to="/">
-            <a class="ui item">Signin</a>
+            <p className="ui item">Signin</p>
           </Link>
           <Link to="/">
-            <a class="ui item">Signup</a>
+            <p className="ui item">Signup</p>
           </Link>
         </div>
       </div>
