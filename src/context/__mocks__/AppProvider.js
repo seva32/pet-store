@@ -1,5 +1,7 @@
-const useAppContext = jest.fn(() => ({ appData: { name: "Nemy" } }));
+import appData from "./valuesProvider";
+
+const useAppContext = jest.fn(() => ({ appData: appData }));
 
 const AppProvider = jest.fn();
 
-export { useAppContext, AppProvider };
+export { useAppContext, AppProvider, appData };

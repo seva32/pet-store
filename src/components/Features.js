@@ -1,11 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 //import { List } from "semantic-ui-react";
 import { useAppContext } from "../context/AppProvider";
 
+export function Bar() {
+  return (
+    <div>
+      <div className="in-bar">soy Bar</div>
+    </div>
+  );
+}
+export function Foo() {
+  return (
+    <div className="in-foo">
+      <Bar />
+    </div>
+  );
+}
+
 const Features = () => {
+  const [text, setText] = useState("Initial para");
   //const list = ["Dogs", "Cats", "Elms", "Lions"];
   const appContext = useAppContext();
   const name = appContext.appData.name;
+
+  const handleOnClick = (text) => {
+    setText("Un carajo");
+  };
+
   return (
     <>
       {/* <List data-ref="list">
@@ -20,10 +41,11 @@ const Features = () => {
       </List> */}
       <ul>
         <li className="item">Cho</li>
-        <li className="item">Nem</li>
+        <li className="item every">3</li>
         <li className="item">{name}</li>
       </ul>
-      <p>some testing paragraph</p>
+      <p onClick={() => handleOnClick("hi")}>{text}</p>
+      <Foo />
     </>
   );
 };
