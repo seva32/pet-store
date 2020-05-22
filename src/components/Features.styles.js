@@ -7,4 +7,5 @@ export const StyledContainer = styled("div")`
   justify-content: space-around;
   flex-flow: column wrap;
   align-items: start;
+  background-color: lightcoral;
 `;
