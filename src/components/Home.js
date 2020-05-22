@@ -14,9 +14,9 @@ const Home = () => {
           <Grid.Column>
             <Features />
           </Grid.Column>
-          <Grid.Column>
+          {/* <Grid.Column>
             <Profile />
-          </Grid.Column>
+          </Grid.Column> */}
         </Grid.Row>
       </Grid>
     </Layout>

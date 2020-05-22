@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 //import { List } from "semantic-ui-react";
 import { useAppContext } from "../context/AppProvider";
-
+import * as Styles from "./Features.styles";
 export function Bar() {
   return (
     <div>
@@ -28,7 +28,7 @@ const Features = () => {
   };
 
   return (
-    <>
+    <Styles.StyledContainer>
       {/* <List data-ref="list">
         {list.map((item, idx) => (
           <List.Item key={idx} data-ref="listItem" className="list-item">
@@ -46,7 +46,7 @@ const Features = () => {
       </ul>
       <p onClick={() => handleOnClick("hi")}>{text}</p>
       <Foo />
-    </>
+    </Styles.StyledContainer>
   );
 };
 
