@@ -17,6 +17,11 @@ export function Foo() {
   );
 }
 
+export function handleTest(cb) {
+  cb();
+  return "tested!";
+}
+
 const Features = () => {
   const [text, setText] = useState("Initial para");
   //const list = ["Dogs", "Cats", "Elms", "Lions"];
