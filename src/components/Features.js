@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-//import { List } from "semantic-ui-react";
+import React, { useState, useReducer } from "react";
 import { useAppContext } from "../context/AppProvider";
 import * as Styles from "./Features.styles";
+import * as ACTIONS from "../store/actions";
+import * as Reducer from "../store/reducers";
+
 export function Bar() {
   return (
     <div>
@@ -24,33 +26,42 @@ export function handleTest(cb) {
 
 const Features = () => {
   const [text, setText] = useState("Initial para");
-  //const list = ["Dogs", "Cats", "Elms", "Lions"];
+
   const appContext = useAppContext();
   const name = appContext.appData.name;
 
-  const handleOnClick = (text) => {
+  const [reducerState, dispatch] = useReducer(
+    Reducer.Reducer1,
+    Reducer.initialState
+  );
+  const dispatchActionSuccess = () => {
+    dispatch(ACTIONS.SUCCESS);
+  };
+  const dispatchActionFailure = () => {
+    dispatch(ACTIONS.FAILURE);
+  };
+
+  const handleOnClick = () => {
     setText("Un carajo");
   };
 
   return (
     <Styles.StyledContainer>
-      {/* <List data-ref="list">
-        {list.map((item, idx) => (
-          <List.Item key={idx} data-ref="listItem" className="list-item">
-            <List.Icon name="checkmark" />
-            <List.Content>
-              <span dangerouslySetInnerHTML={{ __html: item }} />
-            </List.Content>
-          </List.Item>
-        ))}
-      </List> */}
       <ul>
         <li className="item">Cho</li>
         <li className="item every">3</li>
         <li className="item">{name}</li>
       </ul>
-      <p onClick={() => handleOnClick("hi")}>{text}</p>
+      <p onClick={() => handleOnClick()}>{text}</p>
       <Foo />
+      <div>
+        {reducerState.stateprop1 ? (
+          <p>stateprop1 is true</p>
+        ) : (
+          <p>stateprop1 is false</p>
+        )}
+      </div>
+      <button onClick={dispatchActionSuccess}>Dispatch Success</button>
     </Styles.StyledContainer>
   );
 };
