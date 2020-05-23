@@ -4,6 +4,8 @@ import Features, { Foo, Bar, handleTest } from "./Features";
 import { appData } from "../context/__mocks__/AppProvider";
 import sinon from "sinon";
 import { assert } from "chai";
+import * as Reducer from "../store/reducers";
+import * as ACTIONS from "../store/actions";
 
 beforeEach(() => {
   jest.resetModules();
@@ -23,7 +25,14 @@ let ulVar = (
 );
 
 describe("Features", () => {
-  let wrapper = shallow(<Features />);
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(<Features />);
+  });
+  afterEach(() => {
+    wrapper = shallow(<Features />);
+  });
 
   it("should render an ul", () => {
     expect(wrapper.find("ul").length).toEqual(1);
@@ -105,13 +114,14 @@ describe("Features", () => {
     expect(wrapper.find("Foo").hostNodes().length).toBeFalsy();
   });
 
-  it("tests invoke", () => {
-    let pEl = wrapper.find("p");
-    expect(pEl.text()).toEqual("Initial para");
-    wrapper.find("p").invoke("onClick")();
-    pEl = wrapper.find("p");
-    expect(pEl.text()).toEqual("Un carajo");
-  });
+  // al cambiar la UI este test da failure, x eso no usar tags/nombres de variables/funciones
+  // it("tests invoke", () => {
+  //   let pEl = wrapper.find("p");
+  //   expect(pEl.text()).toEqual("Initial para");
+  //   wrapper.find("p").invoke("onClick")();
+  //   pEl = wrapper.find("p");
+  //   expect(pEl.text()).toEqual("Un carajo");
+  // });
 
   it("tests matcheselement", () => {
     expect(wrapper.find("ul").matchesElement(ulVar)).toBe(true);
@@ -132,6 +142,28 @@ describe("Features", () => {
     expect(wrapper.find(".every").parent().is("ul")).toEqual(true);
     expect(wrapper.find(".every").parents().length).toEqual(2); // debug muestra todo incluido every
   });
+
+  it("should find the initial state value = Initial", () => {
+    function findPara(w, text) {
+      const regex = new RegExp(text, "i");
+      return w
+        .find("*")
+        .filterWhere(
+          (n) => n.text().match(regex) && n.html() !== wrapper.html()
+        );
+    }
+    let para = findPara(wrapper, "Initial");
+    expect(para.exists()).toEqual(true);
+    para.invoke("onClick")();
+    para = findPara(wrapper, "Un");
+    expect(para.exists()).toEqual(true);
+  });
+
+  it("should find children", () => {
+    expect(wrapper.find('p[children^="In"]').exists()).toEqual(true);
+    wrapper.find('p[children^="In"]').invoke("onClick")();
+    expect(wrapper.find('p[children^="Un"]').exists()).toEqual(true);
+  });
 });
 
 describe("Features context", () => {
@@ -149,5 +181,31 @@ describe("tests sinon stub", () => {
     handleTest(spyF);
     assert(spyF.calledOnce); // chai
     sinon.assert.calledOnce(spyF); // just sinon
+  });
+});
+
+describe("test the reducer and actions", () => {
+  it("should return the initial state", () => {
+    expect(Reducer.initialState).toEqual({ stateprop1: false });
+  });
+
+  it("should change stateprop1 from false to true", async () => {
+    let state = await Reducer.Reducer1(Reducer.initialState, ACTIONS.SUCCESS);
+    expect(state).toEqual({
+      stateprop1: true,
+    });
+  });
+});
+
+describe("test component/reducer", () => {
+  it("Reducer changes stateprop1 from false to true", () => {
+    let wrapper = shallow(<Features />);
+    expect(wrapper.find('p[children="stateprop1 is false"]').exists()).toEqual(
+      true
+    );
+    wrapper.find('button[children="Dispatch Success"]').invoke("onClick")();
+    expect(wrapper.find('p[children="stateprop1 is false"]').exists()).toEqual(
+      false
+    );
   });
 });
