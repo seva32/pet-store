@@ -4,4 +4,4 @@ import ReactDelayRender from 'react-delay-render';
 
 const Loading = () => <Loader active size="massive" />;
 
-export default ReactDelayRender({ delay: 300 })(Loading);
+export default ReactDelayRender({ delay: 500 })(Loading);
